@@ -4,8 +4,7 @@ using namespace std;
 #include "Employee.h"
 class Admin : public Employee {
 private:
-    Employee arr[1000] = {};
-    int static  counter;
+    vector <Employee> Employees;
 
     static Admin* one_and_only_instance;
     static int unique_id;
@@ -25,7 +24,7 @@ public:
     }
 
     void operator=(const Admin&) = delete;
-    Admin(Admin& other) = delete;  //Singilture
+    Admin(Admin& other) = delete;
 
     void PrintUniqueID() {
         std::cout << "Current Instance's unique id: " << this->unique_id << std::endl;
@@ -38,28 +37,36 @@ public:
         e->setId(id);
         e->setName(name);
         e->setPassword(password);
-        arr[counter] = *e;
-        counter++;
+
+        Employees.push_back(*e);
+
     }
-    void addEmployee(Employee e) {
-        arr[counter] = e;
-        counter++;
+    void addEmployee(Employee& e) {
+        Employees.push_back(e);
     }
     void editEmployee(Employee& e, int id, string name, string password) {
         e.setId(id);
         e.setName(name);
         e.setPassword(password);
     }
-    void editEmployee(Employee& e, int id) {
-        e.setId(id);
-    }
-    void editEmployee(Employee& e, string name) {
-        e.setName(name);
-    }
+    /*   void editEmployee(Employee& e, int id) {
+           e.setId(id);
+       }
+       void editEmployee(Employee& e, string name) {
+           e.setName(name);
+       }*/
     void getAllEmployees() {
-        for (int i = 0; i < counter; i++)
+        for (int i = 0; i < Employees.size(); i++)
         {
-            cout << arr[i].getName() << endl;
+            cout << Employees[i].getName() << endl;
+        }
+    }
+    Employee* searchEmployee(int id) {
+        for (int i = 0; i < Employees.size(); i++) {
+            if (Employees[i].getId() == id) {
+                Employee* e = &Employees[i];
+                return e;
+            }
         }
     }
 };
