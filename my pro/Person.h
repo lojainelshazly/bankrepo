@@ -21,15 +21,25 @@ public:
         this->id = id;
     }
     //==>>setters<<==
-    virtual void  setName(string name) = 0;
-    virtual void  setId(int id) = 0;
-    virtual void setPassword(string password) = 0;
-    //==>>getters<<==
-    virtual int getId() = 0;
-    virtual string getName() = 0;
-    virtual string getPassword() = 0;
-    //====>>methods<<====
-    virtual void displayInfo() = 0;
+     void  setName(string name) {
+        this->name = name;
+    }
+    virtual void  setId(int id) {
+        this->id = id;
+    }
+    virtual void setPassword(string password) {
+        this->password = password;
+    }
+    int getId() {
+        return this->id;
+    }
+     string getName() {
+        return this->name;
+    }
+    string getPassword() {
+        return this->password;
+    }
+    
 };
 
 

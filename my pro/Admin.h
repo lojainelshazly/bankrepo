@@ -1,7 +1,11 @@
-#pragma once
+
 #include<iostream>
 using namespace std;
+#include<vector>
 #include "Employee.h"
+
+using namespace std;
+
 class Admin : public Employee {
 private:
     vector <Employee> Employees;
