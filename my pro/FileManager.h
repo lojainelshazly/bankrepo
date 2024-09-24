@@ -56,7 +56,10 @@ public:
 	static void updateAdmins() {
 		removeAllAdmins();
 		for (aIt = allAdmins.begin(); aIt != allAdmins.end(); aIt++)
-		//	addAdmin(*aIt);
+		{
+			//addAdmin(*aIt);
+		}
+		
 		
 	}
 };
