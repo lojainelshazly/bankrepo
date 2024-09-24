@@ -18,9 +18,9 @@ public:
 		vector<string> info = split(line);
 		Client client;
 		client.setId(stoi(info[0]));
-		client.getName(info[1]);
-		client.getPassword(info[2]);
-		client.getBalance(stod(info[3]));
+		client.setName(info[1]);
+		client.setPassword(info[2]);
+		client.setBalance(stod(info[3]));
 		return client;
 	}
 	static Employee parseToEmployee(string line) {
@@ -34,7 +34,7 @@ public:
 	}
 	static Admin parseToAdmin(string line) {
 		vector<string> info = split(line);
-		Admin admin;
+		Admin admin ;
 		admin.setId(stoi(info[0]));
 		admin.setName(info[1]);
 		admin.setPassword(info[2]);

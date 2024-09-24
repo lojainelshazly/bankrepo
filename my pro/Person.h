@@ -1,53 +1,71 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include<fstream>
+#include <fstream>
 using namespace std;
 
-class Person {
+class Person
+{
 protected:
     int id;
     string name;
     string password;
+
 public:
-    //Cons
-    Person() {
+    Person()
+    {
         id = 0;
+        name = " ";
+        password = " ";
     };
     Person(int id, string name, string password)
     {
-        this->password = password;
-        this->name = name;
-        this->id = id;
+        setId(id);
+        setName(name);
+        setPassword(password);
     }
     //==>>setters<<==
-     void  setName(string name) {
-        this->name = name;
+    void setName(string name)
+    {
+        if (Validation::validateName(name))
+        {
+            this->name = name;
+        }
+        else
+            cout << "Invalid name \n";
     }
-    virtual void  setId(int id) {
+    void setPassword(string password){
+         if (Validation::validatepassword(password))
+        {
+            this->password = password;
+        }
+        else
+        {
+            cout << "Invalid password \n";
+        } 
+    }
+    void setId(int id)
+    {
         this->id = id;
     }
-    virtual void setPassword(string password) {
-        this->password = password;
-    }
-    int getId() {
+    int getId()
+    {
         return this->id;
     }
-     string getName() {
+    string getName()
+    {
         return this->name;
     }
-    string getPassword() {
+    string getPassword()
+    {
         return this->password;
     }
     void display()
     {
         cout << "name : " << name << endl;
         cout << "id : " << id << endl;
-        cout<<"///////////////////////////////////////"<<endl;
-    //    cout << "password is: " << password << endl;
+        cout << "password : " << password << endl;
+        cout << "///////////////////////////////////////" << endl;
+      
     }
-    
 };
-
-
-   

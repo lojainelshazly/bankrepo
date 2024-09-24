@@ -41,32 +41,7 @@ int main()
 	file3.close();
 	system("pause");
 	////////////////////////////////////
-	 Client* c = new Client("1254542", "vip", 69000, 14758, "Ahmwd");
-    Client* c2 = new Client("25415657", "reg", 7500, 14758, "shawky");
-    Employee* e =new Employee();
-    Employee* e1 = new Employee(15784,"Fareshh","kjdhbxxjsv",6500);
-    e->setName("Ahmed");
-    e->setId(1234);
-    e->setPassword("123456789");
-    e->setSalary(5500);
-    e->displayInfo();
-    e1->displayInfo();
-    e->addClient(*c);
-    e->addClient(*c2);
-    e->getAllClient();
-    Admin* s1 = Admin::get_instance(10);
-    s1->PrintUniqueID();
-    std::cout << "memory location: " << s1 << std::endl;
 
-    s1->setName("Ahmed2");
-    s1->setId(1235);
-    s1->setPassword("123456789");
-    s1->setSalary(6000);
- 
-    s1->addEmployee(*e);
-    s1->addEmployee(*e1);
-    s1->addNewEmployee(11111, "Ashour", "lksnddjdc");
-    s1->addNewEmployee(111115, "Ashour2", "lksnddjdc");
-    s1->getAllEmployees();
+  
 }
 

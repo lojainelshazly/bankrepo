@@ -30,7 +30,7 @@ public:
 	static void saveEmployee(string fileName, string lastIdFile, Employee e) {
 		int id = getLast(lastIdFile);
 		fstream file;
-		file, open(fileName, ios::app);
+		file.open(fileName, ios::app);
 		file << id + 1 << '&' << e.getName() << '&' << e.getPassword() << '&' << e.getSalary() << "\n";
 		file.close();
 		saveLast(lastIdFile, id + 1);
@@ -69,7 +69,7 @@ public:
 		fstream file1, file2;
 		file1.open(fileName, ios::out);
 		file1.close();
-		file2.open(lastIdFile, ios::out);
+		file2.open(lastFile, ios::out);
 		file2 << 0;
 		file2.close();
 	}

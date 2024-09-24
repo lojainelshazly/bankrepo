@@ -14,7 +14,7 @@ private:
 		FileHelper::saveClient(client);
 	}
 	static void addEmployee(Employee employee) {
-		FileHelper::saveEmployee(Employee
+		FileHelper::saveEmployee(employee);
 	}
 	static void addAdmin(Admin admin) {
 		FileHelper::saveEmployee("Admins.txt", "AdminLastId.txt", admin);

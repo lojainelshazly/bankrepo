@@ -23,32 +23,24 @@ public:
     Client(string password, string type, double balance, int id, string name) : Person(id, name, password)
     {
         this->type = type;
-        this->balance = balance;
+        setBalance(balance);
     }
 
     //******************** Setters ********************
 
-    void setPassword(string password)
+    void setBalance(double Balance)
     {
-        this->password = password;
-    }
-
-    void setType(string type)
-    {
-        this->type = type;
-    }
-
-    void setBalance(double balance)
-    {
-        this->balance = balance;
+        if (Validation::validateBalance(balance))
+        {
+            this->balance = balance;
+        }
+        else
+        {
+            cout << "Invalid balance \n";
+        }
     }
 
     //******************** Getters ********************
-
-    string getPassword()
-    {
-        return password;
-    }
 
     string getType()
     {
@@ -62,35 +54,35 @@ public:
 
     //******************** Methods ********************
 
-    void getAccountInfo()
+    void display()
     {
-        cout << "Please Enter Your Password : " << endl;
-        cin >> password;
-        cout << "Please Enter Your Account Type : " << endl;
-        cin >> type;
-        cout << "\n==================\n";
+       Person ::display();
+       cout<<"Balance : " << balance<< endl  ;
     }
 
     //******************** Withdrawal ********************
-    double withdraw(double amount)
+    void withdraw(double amount)
     {
         cout << "Please Enter The Withdrawal Amount : " << endl;
-        if (amount <= balance)
+        if (amount <= balance && balance > 0)
         {
             balance -= amount;
             cout << "Amount After Withdraw : " << balance << endl;
         }
         else
-            {cout << " Sorry, This Amount Exceeds Your Balance\n";}
-        return balance;
+        {
+            cout << " Sorry, This Amount Exceeds Your Balance\n";
+        }
     }
 
     //******************** Deposit ********************
-    double deposit(double amount)
+    void deposit(double amount)
     {
         cout << "Please Enter Amount To Deposit : " << endl;
-        balance += amount;
-        return balance;
+        if (amount > 0)
+        {
+            balance += amount;
+        }
     }
 
     //******************** Checking Balance ********************
@@ -100,19 +92,17 @@ public:
     }
 
     //******************** Transfer to ********************
-    double transferTo(Person& x, double amount)
+    void transferTo(Client &c2, double amount)
     {
         cout << "Please Enter The Amount : " << endl;
-        if (amount <= balance)
-        {
-            balance -= amount;
-            cout << "Amount After Transfering : " << balance << endl;
-        }
-        else
-            cout << "Sorry, This Amount Exceeds Your Balance\n";
-        return balance;
+        withdraw(amount);
+        c2.deposit(amount);
+        
+    }
+    void checkBalance(){
+        cout << "Balance : "<<balance <<endl;
     }
 };
-//Vector +Interator global
+// Vector +Interator global
 static vector<Client> allClients;
 static vector<Client>::iterator clIt;
