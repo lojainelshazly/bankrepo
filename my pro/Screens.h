@@ -25,29 +25,41 @@ class Screens
 	static void logout() {
 		cout << "you have logged out" << endl;
 	}
+static void loginscreen(int c) {
+	switch (c) {
+	case 1:
+	cout << "Admin login" << endl;
+	break;
+	case 2:
+		cout << "employee login" << endl;
+		break;
 
+	case 3:
+		cout << "client login" << endl;
+		break;
+	default:
+		invalid();
+		break;
 
-	static void loginscreen(int c) {
-		if (c == 1) {
-			cout << "Admin login" << endl;
+	}
+	
+}
+
+	static void runApp() {
+		File_Manager::getAllData();
+		int choice;
+		while (true) {
+			loginOptions();
+			choice = loginAs();
+			if (choice == 4) {
+				logout();
+				break;
+			}
+			loginscreen(choice);
 
 		}
-		else if (c==2) {
-			cout << "employee login" << endl;
 
-		}
-		else if (c == 3) {
-			cout << "client login" << endl;
-
-		}
-		else {
-			cout << "invalid please try again" << endl;
-		}
-		
 	}
 };
 
-static void runApp() {
-	
 
-}
