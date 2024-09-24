@@ -1,4 +1,4 @@
-#pragma once
+
 #include <fstream>
 #include"Employee.h"
 #include"Admin.h"
@@ -57,9 +57,7 @@ public:
 		removeAllAdmins();
 		for (aIt = allAdmins.begin(); aIt != allAdmins.end(); aIt++)
 		{
-			//addAdmin(*aIt);
+			addAdmin(*aIt);
 		}
-		
-		
 	}
 };

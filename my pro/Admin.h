@@ -71,4 +71,4 @@ public:
 };
 //Vector +Interator global
 static vector<Admin> allAdmins;
-static vector<Admin> :: iterator aIt;
+static vector<Admin>::iterator aIt;

@@ -58,7 +58,7 @@ public:
 	static void getAdmins() {
 		string line;
 		ifstream file;
-		file.open("Admins,txt");
+		file.open("Admins.txt");
 		while (getline(file, line)) {
 			Admin a = Parser::parseToAdmin(line);
 			allAdmins.push_back(a);
