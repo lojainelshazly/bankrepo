@@ -14,7 +14,7 @@ private:
 		FileHelper::saveClient(client);
 	}
 	static void addEmployee(Employee employee) {
-		FileHelper::saveEmployee(employee);
+		FileHelper::saveEmployee("Employees.txt","EmployeeLastId.txt",employee);
 	}
 	static void addAdmin(Admin admin) {
 		FileHelper::saveEmployee("Admins.txt", "AdminLastId.txt", admin);
@@ -50,12 +50,13 @@ public:
 	}
 	static void updateEmployees() {
 		removeAllEmployees();
-		for (clIt = allEmployees.begin(); eIt != allEmplyees.end(); elIt++)
-			addEmployees(*eIt);
+		for (eIt = allEmployees.begin(); eIt != allEmployees.end(); eIt++)
+			addEmployee(*eIt);
 	}
 	static void updateAdmins() {
 		removeAllAdmins();
-		for (clIt = allAdmins.begin(); aIt != allClients.end(); aIt++)
-			addClient(*aIt);
+		for (aIt = allAdmins.begin(); aIt != allAdmins.end(); aIt++)
+		//	addAdmin(*aIt);
+		
 	}
 };

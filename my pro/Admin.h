@@ -7,18 +7,25 @@ using namespace std;
 using namespace std;
 
 class Admin : public Employee {
-private:
+//private:
    // vector <Employee> Employees;
 
-    static Admin* one_and_only_instance;
+    /*static Admin* one_and_only_instance;
     static int unique_id;
     Admin(const int num) {
         unique_id = num;
-    }
+    }*/
 
 
 public:
-    static Admin* get_instance(const int num) {
+    Admin():Employee(){
+
+    }
+    Admin(int id, string name, string password, double salary):Employee(id ,name,password ,salary){
+
+    }
+  
+   /* static Admin* get_instance(const int num) {
         if (one_and_only_instance == nullptr) {
             std::cout << "creating a new instance" << std::endl;
             one_and_only_instance = new Admin(num);
@@ -32,7 +39,7 @@ public:
 
     void PrintUniqueID() {
         std::cout << "Current Instance's unique id: " << this->unique_id << std::endl;
-    }
+    }*/
 
 
     //////////////////////////////////////////////////////////////////////////
@@ -55,7 +62,7 @@ public:
         searchEmployee(id)->setPassword(password);
          searchEmployee(id)->setSalary(salary);
     }
-      void listEmployeet()
+      void listEmployee()
     {
         for(eIt =allEmployees.begin() ; eIt != allEmployees.end() ; eIt++){
            eIt->display();
@@ -64,4 +71,4 @@ public:
 };
 //Vector +Interator global
 static vector<Admin> allAdmins;
-static vector<Admin>::iterator aIt;
+static vector<Admin> :: iterator aIt;
