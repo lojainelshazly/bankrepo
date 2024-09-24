@@ -28,14 +28,14 @@ class Screens
 static void loginscreen(int c) {
 	switch (c) {
 	case 1:
-	cout << "Admin login" << endl;
+	
 	break;
 	case 2:
-		cout << "employee login" << endl;
+		
 		break;
 
 	case 3:
-		cout << "client login" << endl;
+		
 		break;
 	default:
 		invalid();
@@ -47,17 +47,10 @@ static void loginscreen(int c) {
 
 	static void runApp() {
 		File_Manager::getAllData();
-		int choice;
-		while (true) {
-			loginOptions();
-			choice = loginAs();
-			if (choice == 4) {
-				logout();
-				break;
-			}
-			loginscreen(choice);
+		
+			
 
-		}
+		
 
 	}
 };
