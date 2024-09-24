@@ -3,14 +3,15 @@
 #include <string>
 #include "Person.h"
 #include <vector>
+
 using namespace std;
 #include "Client.h"
-
+#include "Validation.h"
 class Employee : public Person
 {
 protected:
     double salary;
-     vector<Client> clients;
+    // vector<Client> clients;
 
 public:
     Employee()
@@ -57,7 +58,7 @@ public:
     }
     void setSalary(double salary)
     {
-
+        
         if (salary < 5000)
             cout << "min salary must be 5000" << endl;
         else
@@ -86,38 +87,38 @@ public:
     //====>>methods<<====
     void displayInfo()
     {
-        cout << "name is: " << name << endl;
-        cout << "id is: " << id << endl;
-        cout << "password is: " << password << endl;
-        cout << "salary is: " << salary << endl;
+        Person::display();
+        cout<<"Salary : "<<salary <<endl ;
+
     }
     void addClient(Client& client)
     {
-        clients.push_back(client);
+        allClients.push_back(client);
     }
     Client* searchClient(int id)
     {
-        for (int i = 0; i < clients.size(); i++)
-        {
-            if (clients[i].getId() == id)
-            {
-                Client* c = &clients[i];
-                return c;
-            }
+        for(clIt =allClients.begin() ; clIt != allClients.end() ; clIt++){
+           if(clIt->getId()==id){
+            return clIt._Ptr;
+           }
+           return NULL ;
         }
     }
-    void getAllClient()
+    void listClient()
     {
-        for (int i = 0; i < clients.size(); i++)
-        {
-            cout << clients[i].getName() << endl;
+        for(clIt =allClients.begin() ; clIt != allClients.end() ; clIt++){
+           clIt->display();
         }
     }
 
-    void editClient(Client& c, int id, string name, string password)
+    void editClient( int id, string name, string password , double balance)
     {
-        c.setId(id);
-        c.setName(name);
-        c.setPassword(password);
+        searchClient(id)->setName(name);
+        searchClient(id)->setPassword(password);
+        searchClient(id)->setBalance(balance);
     }
+    
 };
+//Vector +Interator global
+static vector<Employee> allEmployees;
+static vector<Employee>::iterator eIt;

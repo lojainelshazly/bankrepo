@@ -113,3 +113,6 @@ public:
         return balance;
     }
 };
+//Vector +Interator global
+static vector<Client> allClients;
+static vector<Client>::iterator clIt;

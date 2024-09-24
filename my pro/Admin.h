@@ -8,7 +8,7 @@ using namespace std;
 
 class Admin : public Employee {
 private:
-    vector <Employee> Employees;
+   // vector <Employee> Employees;
 
     static Admin* one_and_only_instance;
     static int unique_id;
@@ -36,41 +36,32 @@ public:
 
 
     //////////////////////////////////////////////////////////////////////////
-    void addNewEmployee(int id, string name, string password) {
-        Employee* e = new Employee();
-        e->setId(id);
-        e->setName(name);
-        e->setPassword(password);
-
-        Employees.push_back(*e);
-
+    void addEmployee(Employee& employee)
+    {
+        allEmployees.push_back(employee);
     }
-    void addEmployee(Employee& e) {
-        Employees.push_back(e);
-    }
-    void editEmployee(Employee& e, int id, string name, string password) {
-        e.setId(id);
-        e.setName(name);
-        e.setPassword(password);
-    }
-    /*   void editEmployee(Employee& e, int id) {
-           e.setId(id);
-       }
-       void editEmployee(Employee& e, string name) {
-           e.setName(name);
-       }*/
-    void getAllEmployees() {
-        for (int i = 0; i < Employees.size(); i++)
-        {
-            cout << Employees[i].getName() << endl;
+    Employee* searchEmployee(int id)
+    {
+        for(eIt =allEmployees.begin() ; eIt != allEmployees.end() ; aIt++){
+           if(eIt->getId()==id){
+            return eIt._Ptr;
+           }
+           return NULL ;
         }
     }
-    Employee* searchEmployee(int id) {
-        for (int i = 0; i < Employees.size(); i++) {
-            if (Employees[i].getId() == id) {
-                Employee* e = &Employees[i];
-                return e;
-            }
+    void editEmployee( int id, string name, string password ,double salary)
+    {
+        searchEmployee(id)->setName(name);
+        searchEmployee(id)->setPassword(password);
+         searchEmployee(id)->setSalary(salary);
+    }
+      void listEmployeet()
+    {
+        for(eIt =allEmployees.begin() ; eIt != allEmployees.end() ; eIt++){
+           eIt->display();
         }
     }
 };
+//Vector +Interator global
+static vector<Admin> allAdmins;
+static vector<Admin>::iterator aIt;
